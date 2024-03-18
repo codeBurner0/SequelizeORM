@@ -1,0 +1,4 @@
+npm init -y
+model
+pg pghost
+sequelize
