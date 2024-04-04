@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import "./model/connection.js";
-import User from "./model/user.js";
+import  db from "./model/connection.js";
 const app = express();
 
 dotenv.config();
@@ -11,14 +10,14 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 app.listen(PORT, async () => {
-  await User.sync({force:true}); 
+  // await db.User.sync({})
+  console.log(db)
   console.log(`server is started on ${PORT}`);
 });
 
-
 // force: true --> //drop table then create new table
 //  User.sync(); --> no drop or create
-//  User.sync({ alter: true }); -->  update one by one 
+//  User.sync({ alter: true }); -->  update one by one
 //  User.drop();--> drop the table
 
 // This will run .sync() only if database name ends with '_test'
